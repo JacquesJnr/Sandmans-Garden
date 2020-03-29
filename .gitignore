@@ -3,7 +3,7 @@ Temp/UnityLockfile
 Library/ArtifactDB-lock
 *.lock
 Library/SourceAssetDB
-Library/
+/Library/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
