@@ -511,7 +511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 20973759146459744}
   zoomOutMin: 5
-  zoomOutMax: 30
+  zoomOutMax: 12
 --- !u!1 &476720711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,7 +2906,7 @@ Camera:
   far clip plane: 500
   field of view: 10
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
