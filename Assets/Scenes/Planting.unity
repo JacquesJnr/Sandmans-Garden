@@ -133,7 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1edf397c91f1d4498b80f1a5f6b136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchStart: {x: 0, y: 0, z: 0}
+  cam: {fileID: 20973759146459744}
+  zoomOutMin: 1
+  zoomOutMax: 17
 --- !u!1 &692768294
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +346,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.2523585, g: 0.33741274, b: 0.5, a: 0}
+  m_BackGroundColor: {r: 0.15018691, g: 0.17963329, b: 0.23584908, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -360,8 +362,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 500
   field of view: 10
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 17.02
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
