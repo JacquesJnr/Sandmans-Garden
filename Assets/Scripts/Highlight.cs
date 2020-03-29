@@ -18,7 +18,7 @@ public class Highlight : MonoBehaviour
             print(hit.collider.name);
             Color color;
             color = myMaterial.GetColor("_TintColor");
-            myMaterial.SetColor("_TintColor", new Color(1F, 1F, 1F, 1F));
+            myMaterial.SetColor("_TintColor", new Color(1f, 1f, 1f, 1f));
         }
         else
         {
