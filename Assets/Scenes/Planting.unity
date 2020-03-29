@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 20973759146459744}
   zoomOutMin: 1
-  zoomOutMax: 17
+  zoomOutMax: 30
 --- !u!1 &692768294
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +300,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4bd4d9c3e9da3fc4ab68aefa0e355f86, type: 2}
+    - target: {fileID: 65073062736129680, guid: c9cd2f088ba05904d8ae0f7f372159f1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9cd2f088ba05904d8ae0f7f372159f1, type: 3}
 --- !u!1 &1777913367
@@ -315,7 +320,7 @@ GameObject:
   - component: {fileID: 1777913369}
   - component: {fileID: 1777913368}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Planting Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,15 +414,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.9
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.6
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.4
+      value: -12.95
       objectReference: {fileID: 0}
     - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
       propertyPath: m_LocalRotation.x
@@ -450,6 +455,18 @@ PrefabInstance:
     - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9837
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9837
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288220933612758, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.9837
       objectReference: {fileID: 0}
     - target: {fileID: 198284356046918974, guid: ddc14582d6480af438b1bf7ddb0a66ab,
         type: 3}
@@ -491,6 +508,16 @@ PrefabInstance:
       propertyPath: autoRandomSeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198284356046918974, guid: ddc14582d6480af438b1bf7ddb0a66ab,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198284356046918974, guid: ddc14582d6480af438b1bf7ddb0a66ab,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 38.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddc14582d6480af438b1bf7ddb0a66ab, type: 3}
 --- !u!1 &1577423718797284
@@ -506,6 +533,7 @@ GameObject:
   - component: {fileID: 124430857108440606}
   - component: {fileID: 81629923298163344}
   - component: {fileID: 426879516}
+  - component: {fileID: 1577423718797285}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: MainCamera
@@ -513,6 +541,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1577423718797285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577423718797284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54044c49754c5d541a28f3186caa4732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myMaterial: {fileID: 2100000, guid: b689e6fedb0520f45ae237a302f0098c, type: 2}
 --- !u!4 &4096147528811256
 Transform:
   m_ObjectHideFlags: 0
@@ -554,7 +595,7 @@ Camera:
   far clip plane: 500
   field of view: 10
   orthographic: 1
-  orthographic size: 17.02
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

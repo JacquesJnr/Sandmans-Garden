@@ -9,11 +9,6 @@ public class PanZoom : MonoBehaviour
     public float zoomOutMin;
     public float zoomOutMax;
 
-    private void Start()
-    {
-        Debug.Log(cam.name);
-    }
-
     // Update is called once per frame
     void Update () {
         if(Input.GetMouseButtonDown(0)){

@@ -63,8 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\EDGE - Isometric Pack\Scripts\EnableCameraDepthInForward.cs" />
+    <Compile Include="Assets\Scripts\Highlight.cs" />
     <Compile Include="Assets\Scripts\PanZoom.cs" />
-    <Compile Include="Assets\Scripts\PlantingGrid.cs" />
     <None Include="Assets\Shaders\HighlighGlobal.shader" />
     <None Include="Assets\EDGE - Isometric Pack\Shaders\Water_Shader.shader" />
     <None Include="Assets\Shaders\Highlight.shader" />

@@ -27,4 +27,4 @@ Material:
     - _Darken: 0
     - _SeeThru: 1
     m_Colors:
-    - _TintColor: {r: 0.2660625, g: 1, b: 0, a: 1}
+    - _TintColor: {r: 0.46, g: 1, b: 0, a: 1}
