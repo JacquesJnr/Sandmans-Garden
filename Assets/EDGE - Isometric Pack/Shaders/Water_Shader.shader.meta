@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 94998218731af1b43927ca3fd91e1d4d
+timeCreated: 1547293306
+licenseType: Store
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _NoiseTexture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
