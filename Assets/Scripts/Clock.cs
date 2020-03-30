@@ -12,6 +12,7 @@ public class Clock : MonoBehaviour
     private void Awake()
     {
         timeText = GetComponent<TMPro.TextMeshPro>();
+        Time.timeScale = 0.5f;
     }
 
     void Update()
