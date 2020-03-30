@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PanZoom : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PanZoom : MonoBehaviour
     private Vector3 touchStart;
     public float zoomOutMin;
     public float zoomOutMax;
+
+    public Slider zoomSlider;
 
     // Update is called once per frame
     void Update () {
@@ -32,6 +35,7 @@ public class PanZoom : MonoBehaviour
             cam.transform.position += direction;
         }
         zoom(Input.GetAxis("Mouse ScrollWheel") * 4f);
+        zoomSlider.value = Camera.main.orthographicSize;
 	}
 
     void zoom(float increment){
