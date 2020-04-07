@@ -18,15 +18,16 @@ public class Clock : MonoBehaviour
     void Update()
     {
         day += Time.deltaTime / RealTime;
-
+        var timeNow = System.DateTime.Now;
 
         float dayNormalized = day % 1f;
         float hoursPerDay = 24f;
         float minutesPerHour = 60f;
 
-        string hoursString = Mathf.Floor(dayNormalized * hoursPerDay).ToString("00");
-        string minutesString = Mathf.Floor(((dayNormalized * hoursPerDay) % 1f) * minutesPerHour).ToString("00");
 
-        timeText.text = hoursString + ":" + minutesString;
+        timeText.text = "<#ffffff>" + timeNow.Hour.ToString("d2") + ":" + timeNow.Minute.ToString("d2") + "</color> \n";
+        //string minutesString = Mathf.Floor(((dayNormalized * hoursPerDay) % 1f) * minutesPerHour).ToString("00");
+
+        //timeText.text = hoursString + ":" + minutesString;
     }
 }

@@ -4,19 +4,60 @@ using UnityEngine;
 
 public class SwitchCameras : MonoBehaviour
 {
-    public GameObject startCam, gameCam;
+    private Camera cam;
+    private Transform camTransform;
+    private float camSize;
+    [SerializeField] private float targetSize;
+    [SerializeField] private Vector3 targetPosition;
+    public float transitionSpeed;
+    public Canvas canvas;
+    public bool stopZooming;
+
+    private PanZoom panZoom;
+    private Highlight highlightScript;
 
     private void Start()
     {
-        startCam.SetActive(true);
-        //gameCam.SetActive(false);
+        cam = Camera.main;
+        camTransform = cam.gameObject.transform;
+        camSize = cam.orthographicSize;
+        canvas.enabled = false;
+        panZoom = gameObject.GetComponent<PanZoom>();
+        highlightScript = GameObject.FindObjectOfType<Highlight>();
+        panZoom.enabled = false;
+        highlightScript.enabled = false;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+
+        if(cam.orthographicSize == targetSize)
         {
-            
+            stopZooming = true;
         }
+
+        if (!stopZooming)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                LeanTween.move(cam.gameObject, targetPosition, transitionSpeed).setOnComplete(EnablePan);
+                zoomIn();
+            }
+        }
+       
+    }
+
+    public void EnablePan()
+    {
+        panZoom.enabled = true;
+        highlightScript.enabled = true;
+        canvas.enabled = true;
+    }
+
+    public void zoomIn()
+    {
+        LeanTween.value(cam.gameObject, cam.orthographicSize, targetSize, transitionSpeed).setOnUpdate((float flt) => {
+            cam.orthographicSize = flt;
+        });
     }
 }

@@ -9,6 +9,9 @@ public class PanZoom : MonoBehaviour
     private Vector3 touchStart;
     public float zoomOutMin;
     public float zoomOutMax;
+    public float min_x, max_x;
+    public float min_y, max_y;
+    public float min_z, max_z;
 
     public Slider zoomSlider;
 
@@ -16,6 +19,7 @@ public class PanZoom : MonoBehaviour
     void Update () {
         if(Input.GetMouseButtonDown(0)){
             touchStart = cam.ScreenToWorldPoint(Input.mousePosition);
+
         }
         if(Input.touchCount == 2){
             Touch touchZero = Input.GetTouch(0);
@@ -30,10 +34,16 @@ public class PanZoom : MonoBehaviour
             float difference = currentMagnitude - prevMagnitude;
 
             zoom(difference * 0.01f);
-        }else if(Input.GetMouseButton(0)){
+        }
+        else if(Input.GetMouseButton(0))
+        {
             Vector3 direction = touchStart - cam.ScreenToWorldPoint(Input.mousePosition);
             cam.transform.position += direction;
+
+            float xpos = cam.transform.position.x;
+            
         }
+
         zoom(Input.GetAxis("Mouse ScrollWheel") * 4f);
         zoomSlider.value = Camera.main.orthographicSize;
 	}

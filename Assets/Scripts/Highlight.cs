@@ -6,23 +6,29 @@ public class Highlight : MonoBehaviour
 {
     private Ray ray;
     private RaycastHit hit;
-    public Material myMaterial;
-    
-    
+    private Material gridPiece;
+    public Material prevGrid;
+    public LayerMask whatIsGrid;
 
-    void Update()
+
+    private void Start()
+    {
+        prevGrid = gridPiece;
+    }
+
+    void FixedUpdate()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGrid))
         {
             Color color;
-            color = myMaterial.GetColor("_TintColor");
-            myMaterial.SetColor("_TintColor", new Color(1f, 1f, 1f, 1f));
+            gridPiece = hit.transform.gameObject.GetComponent<Renderer>().material;
+            color = hit.transform.gameObject.GetComponent<Renderer>().material.GetColor("_TintColor");
+            gridPiece.SetColor("_TintColor", new Color(1f, 1f, 1f, 1f));
         }
         else
         {
-            myMaterial.SetColor("_TintColor", new Color(0.46f, 1f, 0f, 1f));
+            gridPiece.SetColor("_TintColor", new Color(0.46f, 1f, 0f, 1f));
         }
-            
     }
 }
