@@ -7,14 +7,7 @@ public class Highlight : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
     private Material gridPiece;
-    public Material prevGrid;
     public LayerMask whatIsGrid;
-
-
-    private void Start()
-    {
-        prevGrid = gridPiece;
-    }
 
     void FixedUpdate()
     {
