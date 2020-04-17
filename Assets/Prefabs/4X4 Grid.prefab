@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3181549626382475004}
   m_Layer: 8
   m_Name: 4X4 Grid
-  m_TagString: Untagged
+  m_TagString: PlantingGrid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
