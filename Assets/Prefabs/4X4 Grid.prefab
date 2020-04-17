@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1240995581962013884}
-  m_Layer: 0
+  - component: {fileID: 3181549626382475004}
+  m_Layer: 8
   m_Name: 4X4 Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +47,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3181549626382475004
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672389074783306887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.463249, y: 0.62493515, z: 4.3346863}
+  m_Center: {x: 10.657295, y: 21.911474, z: -8.013981}
 --- !u!1 &6360319875824099663
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,8 +72,8 @@ GameObject:
   - component: {fileID: 6360319875824099651}
   - component: {fileID: 6360319875824099650}
   - component: {fileID: 6360319875824099661}
-  m_Layer: 0
-  m_Name: Planting (9)
+  m_Layer: 9
+  m_Name: Planting (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +166,7 @@ GameObject:
   - component: {fileID: 6360319875969092504}
   - component: {fileID: 6360319875969092507}
   - component: {fileID: 6360319875969092506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Planting (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,8 +260,8 @@ GameObject:
   - component: {fileID: 6360319876112030426}
   - component: {fileID: 6360319876112030405}
   - component: {fileID: 6360319876112030404}
-  m_Layer: 0
-  m_Name: Planting (7)
+  m_Layer: 9
+  m_Name: Planting (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,8 +354,8 @@ GameObject:
   - component: {fileID: 6360319876469205951}
   - component: {fileID: 6360319876469205950}
   - component: {fileID: 6360319876469205945}
-  m_Layer: 0
-  m_Name: Planting (16)
+  m_Layer: 9
+  m_Name: Planting (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,8 +448,8 @@ GameObject:
   - component: {fileID: 6360319876618568054}
   - component: {fileID: 6360319876618568049}
   - component: {fileID: 6360319876618568048}
-  m_Layer: 0
-  m_Name: Planting (8)
+  m_Layer: 9
+  m_Name: Planting (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +542,7 @@ GameObject:
   - component: {fileID: 6360319876707042370}
   - component: {fileID: 6360319876707042381}
   - component: {fileID: 6360319876707042380}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Planting (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,8 +636,8 @@ GameObject:
   - component: {fileID: 6360319876759699973}
   - component: {fileID: 6360319876759699972}
   - component: {fileID: 6360319876759699975}
-  m_Layer: 0
-  m_Name: Planting (13)
+  m_Layer: 9
+  m_Name: Planting (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -716,7 +730,7 @@ GameObject:
   - component: {fileID: 6360319876942544872}
   - component: {fileID: 6360319876942544875}
   - component: {fileID: 6360319876942544874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Planting (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,8 +824,8 @@ GameObject:
   - component: {fileID: 6360319876945120752}
   - component: {fileID: 6360319876945120755}
   - component: {fileID: 6360319876945120754}
-  m_Layer: 0
-  m_Name: Planting (17)
+  m_Layer: 9
+  m_Name: Planting (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,8 +918,8 @@ GameObject:
   - component: {fileID: 6360319877013167119}
   - component: {fileID: 6360319877013167118}
   - component: {fileID: 6360319877013167113}
-  m_Layer: 0
-  m_Name: Planting (19)
+  m_Layer: 9
+  m_Name: Planting (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -998,8 +1012,8 @@ GameObject:
   - component: {fileID: 6360319877282475767}
   - component: {fileID: 6360319877282475766}
   - component: {fileID: 6360319877282475761}
-  m_Layer: 0
-  m_Name: Planting (12)
+  m_Layer: 9
+  m_Name: Planting (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,8 +1106,8 @@ GameObject:
   - component: {fileID: 6360319877644504263}
   - component: {fileID: 6360319877644504262}
   - component: {fileID: 6360319877644504257}
-  m_Layer: 0
-  m_Name: Planting (6)
+  m_Layer: 9
+  m_Name: Planting (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1186,8 +1200,8 @@ GameObject:
   - component: {fileID: 6360319877682978742}
   - component: {fileID: 6360319877682978737}
   - component: {fileID: 6360319877682978736}
-  m_Layer: 0
-  m_Name: Planting (18)
+  m_Layer: 9
+  m_Name: Planting (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,7 +1294,7 @@ GameObject:
   - component: {fileID: 6360319877683128336}
   - component: {fileID: 6360319877683128339}
   - component: {fileID: 6360319877683128338}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Planting (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,8 +1388,8 @@ GameObject:
   - component: {fileID: 6360319877769607460}
   - component: {fileID: 6360319877769607463}
   - component: {fileID: 6360319877769607462}
-  m_Layer: 0
-  m_Name: Planting (14)
+  m_Layer: 9
+  m_Name: Planting (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1468,8 +1482,8 @@ GameObject:
   - component: {fileID: 6360319877807177962}
   - component: {fileID: 6360319877807177941}
   - component: {fileID: 6360319877807177940}
-  m_Layer: 0
-  m_Name: Planting (11)
+  m_Layer: 9
+  m_Name: Planting (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

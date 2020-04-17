@@ -96,11 +96,11 @@
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTween.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
-    <Compile Include="Assets\Scripts\CamMovementLimits.cs" />
-    <Compile Include="Assets\Scripts\CamTransition.cs" />
+    <Compile Include="Assets\Scripts\Camera Scripts\CamMovementLimits.cs" />
+    <Compile Include="Assets\Scripts\Camera Scripts\CamTransition.cs" />
+    <Compile Include="Assets\Scripts\Camera Scripts\PanZoom.cs" />
     <Compile Include="Assets\Scripts\Clock.cs" />
     <Compile Include="Assets\Scripts\Highlight.cs" />
-    <Compile Include="Assets\Scripts\PanZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
