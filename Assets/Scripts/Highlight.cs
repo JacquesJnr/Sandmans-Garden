@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Highlight : MonoBehaviour
 {
-    [SerializeField]private GameObject highlightedGrid;
-    //[SerializeField]private Material gridColour;
+    public GameObject highlightedGrid, gridToPlant;
     private List<GameObject> gridSqaures;
     public LayerMask whatIsGrids;
     public LayerMask whatIsPlots;
@@ -53,11 +52,13 @@ public class Highlight : MonoBehaviour
                 if (!selected)
                 {
                     selected = true;
+                    gridToPlant = highlightedGrid;
                     Debug.Log("Selected " + highlightedGrid.name);
                 }
                 else if(selected)
                 {
                     selected = false;
+                    gridToPlant = null;
                     Debug.Log("Deselected " + highlightedGrid.name);
                 }
                 else
