@@ -7,13 +7,15 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> plantingGrids;
-    [SerializeField] private List<GameObject> menuItem;
-    [SerializeField]private bool hideGrid = true;
+    [SerializeField] private List<GameObject> menuBoxes;
+    [SerializeField] private List<RawImage> menuItems;
+    public bool hideGrid = true;
 
-    private GameObject ui_Menu, sunflowerIcon, zoomBar, zoomIcon, settings;
+    private GameObject ui_Menu, sunflowerIcon, zoomBar, zoomIcon, settings; //Canvas items
+    private bool selectingSeed;
     public TMPro.TextMeshProUGUI helpText;
 
-    private Highlight highlightScript;
+    private Highlight highlightScript; // References Highlight.cs
 
 
     private void Start()
@@ -34,15 +36,22 @@ public class UIManager : MonoBehaviour
 
         foreach(GameObject slot in GameObject.FindGameObjectsWithTag("MenuIcons"))
         {
-            menuItem.Add(slot);
+            menuBoxes.Add(slot);
             slot.GetComponent<Button>().interactable = false;
+        }
+
+        foreach(GameObject seedParent in GameObject.FindGameObjectsWithTag("SeedIcon"))
+        {
+            RawImage seeds = seedParent.GetComponent<RawImage>();
+            menuItems.Add(seeds);
+            seeds.color = new Color(0.5f,0.5f,0.5f,255);
         }
 
     }
 
     private void Update()
     {
-        //Loops through the list of grids and sets them to true or false 
+        //Loops through the list of grids and sets them to true or false depending on the state of the hideGrid bool
         for(int i = 0; i < plantingGrids.Count; i++)
         {
             if (hideGrid)
@@ -56,31 +65,47 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        //helpText.text = "Select a space to plant your flower";
-
-        for (int i = 0; i < menuItem.Count; i++)
+        //Checks the Highlight script to see whether or not the seed menu is interactable
+        for (int i = 0; i < menuBoxes.Count; i++)
         {
+            //If a planting space is selected, allow the player to ineract with the seed menu boxes
             if (!highlightScript.selected)
             {
                
-                menuItem[i].GetComponent<Button>().interactable = false;
+                menuBoxes[i].GetComponent<Button>().interactable = false;
             }
             else
             {
-                menuItem[i].GetComponent<Button>().interactable = true;
+                menuBoxes[i].GetComponent<Button>().interactable = true;
+                
             }
 
-            if (!menuItem[i].GetComponent<Button>().interactable)
+            if (!menuBoxes[i].GetComponent<Button>().interactable)
             {
                 helpText.text = "Select a space to plant your flower";
+                selectingSeed = false; //Used to determine if the seeds should be interactable
             }
             else
             {
+                selectingSeed = true;
                 helpText.text = "Select a seed to plant";
             }
-
         }
 
+        if (selectingSeed)
+        {
+            for(int j = 0; j < menuItems.Count; j++)
+            {
+                menuItems[j].color = new Color(255, 255, 255, 255);
+            }
+        }
+        else
+        {
+            for (int j = 0; j < menuItems.Count; j++)
+            {
+                menuItems[j].color = new Color(0.5f, 0.5f, 0.5f, 255);
+            }
+        }
     }
 
     // Sunflower Icon - Sets the value of the hideGrid bool which determines if the grids should be shown or not

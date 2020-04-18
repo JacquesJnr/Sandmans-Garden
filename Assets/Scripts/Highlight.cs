@@ -5,9 +5,9 @@ using UnityEngine;
 public class Highlight : MonoBehaviour
 {
     public GameObject highlightedGrid, gridToPlant;
-    private List<GameObject> gridSqaures;
+    public GameObject prevHighlighted; // set private if works
     public LayerMask whatIsGrids;
-    public LayerMask whatIsPlots;
+    //public LayerMask whatIsPlots; // For later
     public bool selected;
     public Color highlighted;
     public Color unhighlighted;
@@ -15,37 +15,69 @@ public class Highlight : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
 
+    public GameObject chevron;
+    public Transform chevronOrigin;
 
-    private void Update()
+    private UIManager _ui;
+
+    private void Start()
+    {
+        chevron.transform.position = chevronOrigin.position;
+        _ui = FindObjectOfType<UIManager>();
+    }
+
+    private void FixedUpdate()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (highlightedGrid != null)
+        {
+            prevHighlighted = highlightedGrid;
+        }
+
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGrids))
         {
             highlightedGrid = hit.transform.gameObject;
+
             foreach (Renderer renderer in highlightedGrid.GetComponentsInChildren<Renderer>())
             {
                 renderer.material.SetColor("_TintColor", highlighted);
             }
-
         }
         else
         {
-            if(highlightedGrid != null)
+            if (highlightedGrid != null)
             {
                 foreach (Renderer renderer in highlightedGrid.GetComponentsInChildren<Renderer>())
                 {
                     renderer.material.SetColor("_TintColor", unhighlighted);
                 }
+
                 highlightedGrid = null;
             }
-           
+
         }
 
-    }
+        if (!_ui.hideGrid)
+        {
+            chevron.SetActive(true);
 
-    private void FixedUpdate()
-    {
-        if(highlightedGrid != null)
+            if (highlightedGrid != null)
+            {
+                chevron.transform.position = highlightedGrid.transform.position + new Vector3(0, 3, 0);
+                chevron.GetComponent<ChevronFloat>().enabled = true;
+            }
+        }
+        else if(_ui.hideGrid && highlightedGrid != null)
+        {
+            
+        }
+        else
+        {
+            chevron.SetActive(false);
+        }
+
+        if (highlightedGrid != null)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -55,7 +87,7 @@ public class Highlight : MonoBehaviour
                     gridToPlant = highlightedGrid;
                     Debug.Log("Selected " + highlightedGrid.name);
                 }
-                else if(selected)
+                else if (selected)
                 {
                     selected = false;
                     gridToPlant = null;
@@ -67,7 +99,5 @@ public class Highlight : MonoBehaviour
                 }
             }
         }
-      
     }
-
 }

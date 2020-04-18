@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlantingGrid
   - MenuIcons
+  - SeedIcon
+  - ChevronTransform
   layers:
   - Default
   - TransparentFX

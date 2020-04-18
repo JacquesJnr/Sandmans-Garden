@@ -99,8 +99,11 @@
     <Compile Include="Assets\Scripts\Camera Scripts\CamMovementLimits.cs" />
     <Compile Include="Assets\Scripts\Camera Scripts\CamTransition.cs" />
     <Compile Include="Assets\Scripts\Camera Scripts\PanZoom.cs" />
+    <Compile Include="Assets\Scripts\ChevronFloat.cs" />
     <Compile Include="Assets\Scripts\Clock.cs" />
     <Compile Include="Assets\Scripts\Highlight.cs" />
+    <Compile Include="Assets\Scripts\Seed.cs" />
+    <Compile Include="Assets\Scripts\Seeds.cs" />
     <Compile Include="Assets\Scripts\TitleScreenFloat.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

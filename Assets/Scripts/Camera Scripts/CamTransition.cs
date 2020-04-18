@@ -7,8 +7,8 @@ public class CamTransition : MonoBehaviour
     private Camera cam;
     private Transform camTransform;
     private float camSize;
-    [SerializeField] private float targetSize;
-    [SerializeField] private Vector3 targetPosition;
+    public float targetSize;
+    public Vector3 targetPosition;
     public float transitionSpeed;
     public Canvas canvas;
     public bool stopZooming;
