@@ -17,13 +17,16 @@ public class Highlight : MonoBehaviour
 
     public GameObject chevron;
     public Transform chevronOrigin;
+    private float chevronY;
 
     private UIManager _ui;
+    private ChevronFloat _chevronFloat;
 
     private void Start()
     {
         chevron.transform.position = chevronOrigin.position;
         _ui = FindObjectOfType<UIManager>();
+        _chevronFloat = FindObjectOfType<ChevronFloat>();
     }
 
     private void FixedUpdate()
@@ -61,6 +64,8 @@ public class Highlight : MonoBehaviour
         if (!_ui.hideGrid)
         {
             chevron.SetActive(true);
+            _chevronFloat.enabled = true;
+            
 
             if (highlightedGrid != null)
             {

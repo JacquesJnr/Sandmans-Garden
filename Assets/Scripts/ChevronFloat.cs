@@ -9,15 +9,29 @@ public class ChevronFloat : MonoBehaviour
     public float duration, delay;
     public Transform origin;
 
+    private Highlight _highlight;
+
+    private void Start()
+    {
+        _highlight = FindObjectOfType<Highlight>();
+    }
+
     void OnEnable()
     {
         if (easeType == LeanTweenType.animationCurve)
         {
-            LeanTween.moveY(gameObject, 12f, duration).setLoopPingPong().setEase(curve);
+            if (transform.position == origin.position)
+            {
+                LeanTween.moveY(gameObject, 12f, duration).setLoopPingPong().setEase(curve);
+                
+            }
         }
-        else
-        {
-            LeanTween.moveY(gameObject, 12f, duration).setLoopPingPong().setEase(easeType);
-        }
+    }
+
+    private void OnDisable()
+    {
+        gameObject.transform.position = origin.position;
+
+        LeanTween.pause(LeanTween.moveY(gameObject, 12f, duration).setLoopPingPong().setEase(curve).id);
     }
 }

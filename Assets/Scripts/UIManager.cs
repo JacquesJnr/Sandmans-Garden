@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI helpText;
 
     private Highlight highlightScript; // References Highlight.cs
-
+    private PanZoom _panZoom;
 
     private void Start()
     {
@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
         settings = GameObject.Find("MenuIcon");
 
         highlightScript = FindObjectOfType<Highlight>();
+        _panZoom = FindObjectOfType<PanZoom>();
 
         //Finds all planting grids in the scene and adds them to the list plantingGrids
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("PlantingGrid"))
@@ -98,6 +99,8 @@ public class UIManager : MonoBehaviour
             {
                 menuItems[j].color = new Color(255, 255, 255, 255);
             }
+
+            _panZoom.enabled = false;
         }
         else
         {
@@ -105,6 +108,8 @@ public class UIManager : MonoBehaviour
             {
                 menuItems[j].color = new Color(0.5f, 0.5f, 0.5f, 255);
             }
+
+            _panZoom.enabled = true;
         }
     }
 
