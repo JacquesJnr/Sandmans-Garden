@@ -77,7 +77,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OppositeX: 0.409
+    - _OppositeX: 1
     - _OppositeY: 0.4078431
     - _OppositeZ: 0.4078431
     - _OverallGradient: 1
@@ -91,21 +91,21 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.13333334, g: 0.227451, b: 0.019607844, a: 1}
+    - _EmissionColor: {r: 0.6509768, g: 0.7830189, b: 0.25485048, a: 1}
     - _EmissionOppositeXColor: {r: 0.409, g: 0.1100069, b: 0, a: 1}
     - _EmissionOppositeYColor: {r: 0.4078431, g: 0.1098039, b: 0, a: 1}
     - _EmissionOppositeZColor: {r: 0.4078431, g: 0.1098039, b: 0, a: 1}
-    - _EmissionXColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionYColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionZColor: {r: 1, g: 1, b: 1, a: 1}
-    - _LightAdd: {r: 0.1544118, g: 0.09477688, b: 0.01930147, a: 1}
+    - _EmissionXColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionYColor: {r: 0.22528036, g: 0.2830189, b: 0.052064802, a: 1}
+    - _EmissionZColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LightAdd: {r: 0, g: 0, b: 0, a: 1}
     - _LightMultiplier: {r: 1, g: 1, b: 1, a: 1}
-    - _OppositeXColor: {r: 0.409, g: 0.1100069, b: 0, a: 1}
-    - _OppositeYColor: {r: 0.4078431, g: 0.1098039, b: 0, a: 1}
-    - _OppositeZColor: {r: 0.4078431, g: 0.1098039, b: 0, a: 1}
-    - _OverallGradientColor: {r: 0.24264705, g: 0, b: 0.21587218, a: 1}
-    - _ShadowTint: {r: 0.0351968, g: 0.1346796, b: 0.1544118, a: 1}
-    - _XColor: {r: 0.23529413, g: 0.16470589, b: 0.3137255, a: 1}
-    - _YColor: {r: 0.9921569, g: 0.8078432, b: 0.21176472, a: 1}
-    - _ZColor: {r: 0.47058827, g: 0.38431376, b: 0.43137258, a: 1}
+    - _OppositeXColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OppositeYColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OppositeZColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OverallGradientColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowTint: {r: 0, g: 0, b: 0, a: 1}
+    - _XColor: {r: 0.03529412, g: 0.13333334, b: 0.15294118, a: 1}
+    - _YColor: {r: 0.16540584, g: 1, b: 0.26010096, a: 1}
+    - _ZColor: {r: 0.16470589, g: 1, b: 0.25882354, a: 1}
