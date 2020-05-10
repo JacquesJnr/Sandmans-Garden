@@ -54,6 +54,7 @@ public class Seed : MonoBehaviour
         flowerTime.text = seeds[2].flowerPeriod.ToString() + " hours";
         fullSize.text = seeds[2].fullSize.ToString() + " cm";
         cost.text = seeds[2].cost.ToString() + " gp";
+        myImage.texture = peacockColour;
     }
 
     public void Flower4() //Peeler
