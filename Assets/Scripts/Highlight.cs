@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Highlight : MonoBehaviour
 {
     public GameObject highlightedGrid, gridToPlant;
     public GameObject prevHighlighted; // set private if works
     public LayerMask whatIsGrids;
+    public LayerMask whatIsBoxes;
     //public LayerMask whatIsPlots; // For later
     public bool selected;
     public Color highlighted;
@@ -36,6 +38,12 @@ public class Highlight : MonoBehaviour
         if (highlightedGrid != null)
         {
             prevHighlighted = highlightedGrid;
+        }
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsBoxes))
+        {
+         
+            Debug.Log(hit.transform.gameObject.name);
         }
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGrids))
@@ -104,5 +112,11 @@ public class Highlight : MonoBehaviour
                 }
             }
         }
+    }
+
+    private bool IsMouseOverUI()
+    {
+        Debug.Log(EventSystem.current.IsPointerOverGameObject());
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }

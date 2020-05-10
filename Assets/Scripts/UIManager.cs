@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -10,8 +11,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> menuBoxes;
     [SerializeField] private List<RawImage> menuItems;
     public bool hideGrid = true;
+    private int iconToHighlight;
 
-    private GameObject ui_Menu, sunflowerIcon, zoomBar, zoomIcon, settings; //Canvas items
+    private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings; //Canvas items
+    public RectTransform windowPos0, windowPos1;
     private bool selectingSeed;
     public TMPro.TextMeshProUGUI helpText;
 
@@ -25,6 +28,9 @@ public class UIManager : MonoBehaviour
         zoomBar = GameObject.Find("Zoom Bar");
         zoomIcon = GameObject.Find("ZoomIcon");
         settings = GameObject.Find("MenuIcon");
+        infoWindow = GameObject.Find("SeedWindow");
+
+        infoWindow.transform.position = windowPos0.position;
 
         highlightScript = FindObjectOfType<Highlight>();
         _panZoom = FindObjectOfType<PanZoom>();
@@ -69,7 +75,7 @@ public class UIManager : MonoBehaviour
         //Checks the Highlight script to see whether or not the seed menu is interactable
         for (int i = 0; i < menuBoxes.Count; i++)
         {
-            //If a planting space is selected, allow the player to ineract with the seed menu boxes
+            //If a planting space is selected, allow the player to interact with the seed menu boxes
             if (!highlightScript.selected)
             {
                
@@ -128,6 +134,7 @@ public class UIManager : MonoBehaviour
         {
             hideGrid = false;
             LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 0.5f);
+            infoWindow.SetActive(true);
             sunflowerIcon.SetActive(false);
             zoomBar.SetActive(false);
             zoomIcon.SetActive(false);
@@ -140,6 +147,27 @@ public class UIManager : MonoBehaviour
         highlightScript.selected = false;
         zoomBar.SetActive(true);
         zoomIcon.SetActive(true);
+    }
+
+    public void Position0()
+    {
+        if (selectingSeed)
+        {
+            infoWindow.transform.position = windowPos0.position;
+        }
+    }
+    public void Position1()
+    {
+        if (selectingSeed)
+        {
+            infoWindow.transform.position = windowPos1.position;
+
+        }
+    }
+
+    private bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
 }
