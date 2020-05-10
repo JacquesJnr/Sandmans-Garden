@@ -13,13 +13,15 @@ public class UIManager : MonoBehaviour
     public bool hideGrid = true;
     private int iconToHighlight;
 
-    private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings; //Canvas items
-    public RectTransform windowPos0, windowPos1;
+    private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings, flowerImg; //Canvas items
+    [SerializeField] private Texture infoImage;
+    public RectTransform hiddenPosition, visiblePosition;
     private bool selectingSeed;
     public TMPro.TextMeshProUGUI helpText;
-
     private Highlight highlightScript; // References Highlight.cs
     private PanZoom _panZoom;
+
+    
 
     private void Start()
     {
@@ -29,8 +31,9 @@ public class UIManager : MonoBehaviour
         zoomIcon = GameObject.Find("ZoomIcon");
         settings = GameObject.Find("MenuIcon");
         infoWindow = GameObject.Find("SeedWindow");
+        flowerImg = GameObject.Find("Image");
+        //infoImage = flowerImg.GetComponent<RawImage>().texture;
 
-        infoWindow.transform.position = windowPos0.position;
 
         highlightScript = FindObjectOfType<Highlight>();
         _panZoom = FindObjectOfType<PanZoom>();
@@ -153,14 +156,14 @@ public class UIManager : MonoBehaviour
     {
         if (selectingSeed)
         {
-            infoWindow.transform.position = windowPos0.position;
+            infoWindow.transform.position = hiddenPosition.position;
         }
     }
     public void Position1()
     {
         if (selectingSeed)
         {
-            infoWindow.transform.position = windowPos1.position;
+            infoWindow.transform.position = visiblePosition.position;
 
         }
     }

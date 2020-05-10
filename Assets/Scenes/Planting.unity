@@ -289,8 +289,9 @@ MonoBehaviour:
   menuBoxes: []
   menuItems: []
   hideGrid: 1
-  windowPos0: {fileID: 1536238364}
-  windowPos1: {fileID: 976819}
+  infoImage: {fileID: 0}
+  hiddenPosition: {fileID: 1536238364}
+  visiblePosition: {fileID: 976819}
   helpText: {fileID: 1513817812}
 --- !u!114 &29386947
 MonoBehaviour:
@@ -1486,34 +1487,47 @@ MonoBehaviour:
   seeds:
   - name: Budpod
     rarity: {r: 0.9058824, g: 0.9058824, b: 0.9058824, a: 1}
-    description: 
+    description: Yes
     flowerPeriod: 0
     fullSize: 0
     cost: 0
+    img: {fileID: 0}
   - name: Polyvase Brush
     rarity: {r: 0.32941177, g: 0.62352943, b: 0.9803922, a: 1}
     description: This flower is just about as useful as a creative computing student
     flowerPeriod: 5
     fullSize: 50
     cost: 12
+    img: {fileID: 0}
   - name: Peacock Flower
     rarity: {r: 0.7254902, g: 0.33333334, b: 1, a: 1}
     description: This flower is just about as useful as a creative computing student
     flowerPeriod: 5
     fullSize: 50
     cost: 12
+    img: {fileID: 0}
   - name: Peeler Plant
     rarity: {r: 0.7254902, g: 0.33333334, b: 1, a: 1}
     description: This flower is just about as usful as a creative computing student
     flowerPeriod: 5
     fullSize: 50
     cost: 12
+    img: {fileID: 0}
   - name: Espada Sol Arbusto
     rarity: {r: 1, g: 0.75294125, b: 0.34509805, a: 1}
     description: This flower is just about as usful as a creative computing student
     flowerPeriod: 5
     fullSize: 50
     cost: 12
+    img: {fileID: 0}
+  budpodColour: {fileID: 2800000, guid: b8209f9a78cbf984c86ad22e0056c1c2, type: 3}
+  espadaColour: {fileID: 2800000, guid: e897621373303ca4fb6b5cb417954631, type: 3}
+  peacockColour: {fileID: 2800000, guid: b51ad86373aea814aadea47e8848dc81, type: 3}
+  peelerColour: {fileID: 2800000, guid: 70a803c05ca0b4245b4c2c7253f90948, type: 3}
+  polyvaseColor: {fileID: 2800000, guid: ccf5aaeae77618c4ebb836b1f324082d, type: 3}
+  sailColour: {fileID: 2800000, guid: 14417e845b5d42849a15c37e06cbaf67, type: 3}
+  wrapvineColour: {fileID: 2800000, guid: 4a800d0fde3a81c4d99486f497d37f9b, type: 3}
+  myImage: {fileID: 1914850407}
   flowerName: {fileID: 1486908713}
   desc: {fileID: 1032399513}
   flowerTime: {fileID: 703691951}
@@ -2371,7 +2385,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2873,7 +2887,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3346,6 +3360,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9505065, y: 1.1242551, z: 0.81764}
   m_Children:
+  - {fileID: 1914850406}
   - {fileID: 1486908712}
   - {fileID: 1991978255}
   - {fileID: 1032399512}
@@ -3773,7 +3788,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4913,7 +4928,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6509,12 +6524,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19, y: 25.4}
-  m_SizeDelta: {x: 874.8, y: 140.9}
+  m_AnchoredPosition: {x: -176.20007, y: 25.4}
+  m_SizeDelta: {x: 560.4, y: 140.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1032399513
 MonoBehaviour:
@@ -8421,7 +8436,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10471,7 +10486,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11634,6 +11649,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897697437}
   m_CullTransparentMesh: 0
+--- !u!1 &1914850405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1914850406}
+  - component: {fileID: 1914850408}
+  - component: {fileID: 1914850407}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1914850406
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914850405}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 650436761}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 270, y: -20}
+  m_SizeDelta: {x: 330, y: 330}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1914850407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914850405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1914850408
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914850405}
+  m_CullTransparentMesh: 0
 --- !u!1 &1924353094
 GameObject:
   m_ObjectHideFlags: 0
@@ -12215,7 +12300,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13104,7 +13189,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650436761}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
