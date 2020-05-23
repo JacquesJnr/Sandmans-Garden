@@ -69,6 +69,7 @@ public class Highlight : MonoBehaviour
 
         }
 
+
         if (!_ui.hideGrid)
         {
             chevron.SetActive(true);
@@ -80,10 +81,6 @@ public class Highlight : MonoBehaviour
                 chevron.transform.position = highlightedGrid.transform.position + new Vector3(0, 3, 0);
                 chevron.GetComponent<ChevronFloat>().enabled = true;
             }
-        }
-        else if(_ui.hideGrid && highlightedGrid != null)
-        {
-            
         }
         else
         {

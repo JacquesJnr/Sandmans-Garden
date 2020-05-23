@@ -8,6 +8,7 @@ TagManager:
   - MenuIcons
   - SeedIcon
   - ChevronTransform
+  - seedMenuIcon
   layers:
   - Default
   - TransparentFX

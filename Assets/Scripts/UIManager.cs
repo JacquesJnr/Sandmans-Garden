@@ -8,32 +8,34 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> plantingGrids;
-    [SerializeField] private List<GameObject> menuBoxes;
+    //[SerializeField] private List<GameObject> gardeningBoxes;
+    [SerializeField] private List<GameObject> seedMenuBoxes;
     [SerializeField] private List<RawImage> menuItems;
     public bool hideGrid = true;
     private int iconToHighlight;
 
-    private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings, flowerImg; //Canvas items
+    private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings, flowerImg, settingsWindow; //Canvas items
+    public GameObject optionsPage, plantingPage;
     [SerializeField] private Texture infoImage;
     public RectTransform hiddenPosition, visiblePosition;
-    private bool selectingSeed;
+    public bool selectingSeed, gardening, optionSelect;
+    public bool planting;
     public TMPro.TextMeshProUGUI helpText;
     private Highlight highlightScript; // References Highlight.cs
     private PanZoom _panZoom;
-
     
 
     private void Start()
     {
-        ui_Menu = GameObject.Find("SeedMenu");
-        sunflowerIcon = GameObject.Find("PlantingIcon");
+        ui_Menu = GameObject.Find("GardeningMenu");
+        sunflowerIcon = GameObject.Find("GardeningIcon");
         zoomBar = GameObject.Find("Zoom Bar");
         zoomIcon = GameObject.Find("ZoomIcon");
         settings = GameObject.Find("MenuIcon");
+        settingsWindow = GameObject.Find("Options Window");
         infoWindow = GameObject.Find("SeedWindow");
         flowerImg = GameObject.Find("Image");
-        //infoImage = flowerImg.GetComponent<RawImage>().texture;
-
+        optionsPage = GameObject.Find("Options");
 
         highlightScript = FindObjectOfType<Highlight>();
         _panZoom = FindObjectOfType<PanZoom>();
@@ -44,9 +46,9 @@ public class UIManager : MonoBehaviour
             plantingGrids.Add(go);
         }       
 
-        foreach(GameObject slot in GameObject.FindGameObjectsWithTag("MenuIcons"))
+        foreach(GameObject slot in GameObject.FindGameObjectsWithTag("seedMenuIcon"))
         {
-            menuBoxes.Add(slot);
+            seedMenuBoxes.Add(slot);
             slot.GetComponent<Button>().interactable = false;
         }
 
@@ -76,30 +78,36 @@ public class UIManager : MonoBehaviour
         }
 
         //Checks the Highlight script to see whether or not the seed menu is interactable
-        for (int i = 0; i < menuBoxes.Count; i++)
+        for (int i = 0; i < seedMenuBoxes.Count; i++)
         {
-            //If a planting space is selected, allow the player to interact with the seed menu boxes
-            if (!highlightScript.selected)
-            {
-               
-                menuBoxes[i].GetComponent<Button>().interactable = false;
-            }
+          if (planting)
+          {
+                //If a planting space is selected, allow the player to interact with the seed menu boxes
+                if (!highlightScript.selected)
+                {
+                    seedMenuBoxes[i].GetComponent<Button>().interactable = false;
+                }
+                else
+                {
+                    seedMenuBoxes[i].GetComponent<Button>().interactable = true;
+                }
+
+                if (!seedMenuBoxes[i].GetComponent<Button>().interactable)
+                {
+                    helpText.text = "Select a space to plant your flower";
+                    selectingSeed = false; //Used to determine if the seeds should be interactable
+                }
+                else
+                {
+                    selectingSeed = true;
+                    helpText.text = "Select a seed to plant";
+                }
+          }
             else
             {
-                menuBoxes[i].GetComponent<Button>().interactable = true;
-                
+                helpText.text = "Choose an option:";
             }
 
-            if (!menuBoxes[i].GetComponent<Button>().interactable)
-            {
-                helpText.text = "Select a space to plant your flower";
-                selectingSeed = false; //Used to determine if the seeds should be interactable
-            }
-            else
-            {
-                selectingSeed = true;
-                helpText.text = "Select a seed to plant";
-            }
         }
 
         if (selectingSeed)
@@ -120,36 +128,84 @@ public class UIManager : MonoBehaviour
 
             _panZoom.enabled = true;
         }
-    }
 
-    // Sunflower Icon - Sets the value of the hideGrid bool which determines if the grids should be shown or not
-    public void SeedMenu()
-    {
-        if (!hideGrid)
+        if (!gardening)
         {
+            planting = false;
             hideGrid = true;
+            selectingSeed = false;
             highlightScript.highlightedGrid = null;
             highlightScript.gridToPlant = null;
-            LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, -520f, 0), 0.5f).setOnComplete(ShowMe);
+            LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, -520f, 0), 0.5f).setOnComplete(CloseGardeningWindow);
         }
 
-        else if (hideGrid)
+        if (gardening)
         {
-            hideGrid = false;
             LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 0.5f);
             infoWindow.SetActive(true);
             sunflowerIcon.SetActive(false);
             zoomBar.SetActive(false);
             zoomIcon.SetActive(false);
+
+        }
+
+        if (optionSelect)
+        {
+            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-705, 149, 0), 0.3f);
+            if (IsMouseOverUI())
+            {
+                _panZoom.enabled = false;
+            }
+        }
+        else
+        {
+            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-1365, 149, 0), 0.3f);
         }
     }
 
-    public void ShowMe()
+    // Sunflower Icon - Sets the value of the hideGrid bool which determines if the grids should be shown or not
+    public void SeedMenu()
+    {
+        if(!gardening)
+        {
+            gardening = true;
+        }
+
+        else if (gardening)
+        {
+            gardening = false;
+        }
+    }
+
+    public void CloseGardeningWindow()
     {
         sunflowerIcon.SetActive(true);
         highlightScript.selected = false;
         zoomBar.SetActive(true);
         zoomIcon.SetActive(true);
+        LeanTween.move(optionsPage.GetComponent<RectTransform>(), new Vector3(-26, 0, 0), 0.1f);
+        MoveDown(plantingPage);
+    }
+
+    public void PlantingWindow()
+    {
+        planting = true;
+        MoveDown(optionsPage);
+        plantingPage.SetActive(true);
+
+        if (hideGrid)
+        {
+            hideGrid = false;
+            infoWindow.SetActive(true);
+        }
+
+        else if (!hideGrid)
+        {
+            hideGrid = true;
+            highlightScript.highlightedGrid = null;
+            highlightScript.gridToPlant = null;
+            infoWindow.SetActive(false);
+        }
     }
 
     public void Position0()
@@ -164,13 +220,38 @@ public class UIManager : MonoBehaviour
         if (selectingSeed)
         {
             infoWindow.transform.position = visiblePosition.position;
-
         }
+    }
+
+    public void OptionsMenuIn()
+    {
+        if (!optionSelect)
+        {
+            optionSelect = true;
+        }
+
+        else if (optionSelect)
+        {
+            optionSelect = false;
+        }
+    }
+
+    public void MoveDown(GameObject ui_element)
+    {
+        LeanTween.move(ui_element.GetComponent<RectTransform>(), new Vector3(-22, -664, 0), 0.1f);
     }
 
     private bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
+    }
+
+    private void OnGUI()
+    {
+        if (planting)
+        {
+            LeanTween.move(plantingPage.GetComponent<RectTransform>(), new Vector3(-22,23,0), 0.2f);
+        }
     }
 
 }
