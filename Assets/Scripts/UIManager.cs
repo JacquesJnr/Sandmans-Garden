@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     private int iconToHighlight;
 
     private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings, flowerImg, settingsWindow; //Canvas items
-    public GameObject optionsPage, plantingPage;
+    public GameObject optionsPage, plantingPage, background;
     [SerializeField] private Texture infoImage;
     public RectTransform hiddenPosition, visiblePosition;
     public bool selectingSeed, gardening, optionSelect;
@@ -58,7 +58,6 @@ public class UIManager : MonoBehaviour
             menuItems.Add(seeds);
             seeds.color = new Color(0.5f,0.5f,0.5f,255);
         }
-
     }
 
     private void Update()
@@ -146,21 +145,9 @@ public class UIManager : MonoBehaviour
             sunflowerIcon.SetActive(false);
             zoomBar.SetActive(false);
             zoomIcon.SetActive(false);
-
         }
 
-        if (optionSelect)
-        {
-            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-705, 149, 0), 0.3f);
-            if (IsMouseOverUI())
-            {
-                _panZoom.enabled = false;
-            }
-        }
-        else
-        {
-            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-1365, 149, 0), 0.3f);
-        }
+       
     }
 
     // Sunflower Icon - Sets the value of the hideGrid bool which determines if the grids should be shown or not
@@ -223,17 +210,24 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void OptionsMenuIn()
+    public void SideTab()
     {
         if (!optionSelect)
         {
             optionSelect = true;
+            LeanTween.alpha(background.GetComponent<RectTransform>(), 0.82f, 0.5f);
         }
 
         else if (optionSelect)
         {
             optionSelect = false;
+            LeanTween.alpha(background.GetComponent<RectTransform>(), 0f, 0.5f);
         }
+    }
+
+    public void SandmansRecords()
+    {
+        
     }
 
     public void MoveDown(GameObject ui_element)
@@ -251,6 +245,19 @@ public class UIManager : MonoBehaviour
         if (planting)
         {
             LeanTween.move(plantingPage.GetComponent<RectTransform>(), new Vector3(-22,23,0), 0.2f);
+        }
+
+        if (optionSelect)
+        {
+            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-705, 149, 0), 0.3f);
+            if (IsMouseOverUI())
+            {
+                _panZoom.enabled = false;
+            }
+        }
+        else
+        {
+            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-1365, 149, 0), 0.3f);
         }
     }
 
