@@ -12,6 +12,7 @@ public class CamTransition : MonoBehaviour
     public float transitionSpeed;
     public Canvas canvas;
     public bool stopZooming;
+    public AnimationCurve curve;
 
     private PanZoom panZoom;
     private Highlight highlightScript;
@@ -43,7 +44,7 @@ public class CamTransition : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                LeanTween.move(cam.gameObject, targetPosition, transitionSpeed).setOnComplete(EnablePan);
+                LeanTween.move(cam.gameObject, targetPosition, transitionSpeed).setOnComplete(EnablePan).setEase(curve);
                 zoomIn();
             }
         }
@@ -60,7 +61,7 @@ public class CamTransition : MonoBehaviour
 
     public void zoomIn()
     {
-        LeanTween.value(cam.gameObject, cam.orthographicSize, targetSize, transitionSpeed).setOnUpdate((float flt) => {
+        LeanTween.value(cam.gameObject, camSize, targetSize, transitionSpeed).setOnUpdate((float flt) => {
             cam.orthographicSize = flt;
         });
     }

@@ -14,16 +14,19 @@ public class UIManager : MonoBehaviour
     public bool hideGrid = true;
     private int iconToHighlight;
 
-    private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings, flowerImg, settingsWindow; //Canvas items
+    private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, tripleBar, flowerImg, tripleBarWindow, analysisStats, sideTabCloseIcon, points, soundWindow; //Canvas items
     public GameObject optionsPage, plantingPage, background;
     [SerializeField] private Texture infoImage;
     public RectTransform hiddenPosition, visiblePosition;
-    public bool selectingSeed, gardening, optionSelect;
+    public bool selectingSeed, gardening, optionSelect, sandmansRecords;
     public bool planting;
     public TMPro.TextMeshProUGUI helpText;
     private Highlight highlightScript; // References Highlight.cs
     private PanZoom _panZoom;
-    
+
+    private List<GameObject> tabMenuOrder;
+    public AnimationCurve curve;
+
 
     private void Start()
     {
@@ -31,11 +34,17 @@ public class UIManager : MonoBehaviour
         sunflowerIcon = GameObject.Find("GardeningIcon");
         zoomBar = GameObject.Find("Zoom Bar");
         zoomIcon = GameObject.Find("ZoomIcon");
-        settings = GameObject.Find("MenuIcon");
-        settingsWindow = GameObject.Find("Options Window");
+        tripleBar = GameObject.Find("MenuIcon");
+        tripleBarWindow = GameObject.Find("Side Tab");
         infoWindow = GameObject.Find("SeedWindow");
         flowerImg = GameObject.Find("Image");
         optionsPage = GameObject.Find("Options");
+        analysisStats = GameObject.Find("Records Stats");
+        sideTabCloseIcon = GameObject.Find("SideTabX");
+        points = GameObject.Find("Points");
+        soundWindow = GameObject.Find("Audio Window");
+
+        tabMenuOrder = new List<GameObject>();
 
         highlightScript = FindObjectOfType<Highlight>();
         _panZoom = FindObjectOfType<PanZoom>();
@@ -128,26 +137,45 @@ public class UIManager : MonoBehaviour
             _panZoom.enabled = true;
         }
 
-        if (!gardening)
+
+        if (gardening)
+        {
+            infoWindow.SetActive(true);
+            sunflowerIcon.SetActive(false);
+            zoomBar.SetActive(false);
+            zoomIcon.SetActive(false);
+        }
+        else
         {
             planting = false;
             hideGrid = true;
             selectingSeed = false;
             highlightScript.highlightedGrid = null;
             highlightScript.gridToPlant = null;
-            LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, -520f, 0), 0.5f).setOnComplete(CloseGardeningWindow);
+            infoWindow.SetActive(false);
+            zoomBar.SetActive(true);
+            zoomIcon.SetActive(true);
+            MoveDown(plantingPage);
         }
 
-        if (gardening)
+        if (optionSelect)
         {
-            LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 0.5f);
-            infoWindow.SetActive(true);
-            sunflowerIcon.SetActive(false);
-            zoomBar.SetActive(false);
-            zoomIcon.SetActive(false);
+            if (IsMouseOverUI())
+            {
+                _panZoom.enabled = false;
+            }
         }
 
-       
+        if (analysisStats.GetComponent<RawImage>().color.a == 1)
+        {
+            _panZoom.enabled = false;
+        }
+
+        if (soundWindow.GetComponent<RectTransform>().anchoredPosition == new Vector2(-55, -262))
+        {
+            _panZoom.enabled = false;
+        }
+
     }
 
     // Sunflower Icon - Sets the value of the hideGrid bool which determines if the grids should be shown or not
@@ -156,22 +184,21 @@ public class UIManager : MonoBehaviour
         if(!gardening)
         {
             gardening = true;
+            LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 0.5f).setEase(curve);
         }
 
         else if (gardening)
         {
             gardening = false;
+            sunflowerIcon.SetActive(true);
+            LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, -520f, 0), 0.5f).setEase(curve);
         }
     }
 
     public void CloseGardeningWindow()
     {
-        sunflowerIcon.SetActive(true);
-        highlightScript.selected = false;
-        zoomBar.SetActive(true);
-        zoomIcon.SetActive(true);
-        LeanTween.move(optionsPage.GetComponent<RectTransform>(), new Vector3(-26, 0, 0), 0.1f);
-        MoveDown(plantingPage);
+        LeanTween.move(optionsPage.GetComponent<RectTransform>(), new Vector3(-26, 0, 0), 0.1f).setEase(curve);
+        
     }
 
     public void PlantingWindow()
@@ -215,24 +242,56 @@ public class UIManager : MonoBehaviour
         if (!optionSelect)
         {
             optionSelect = true;
+            sunflowerIcon.SetActive(false);
+            points.SetActive(false);
             LeanTween.alpha(background.GetComponent<RectTransform>(), 0.82f, 0.5f);
         }
 
         else if (optionSelect)
         {
             optionSelect = false;
+            sunflowerIcon.SetActive(true);
+            points.SetActive(true);
             LeanTween.alpha(background.GetComponent<RectTransform>(), 0f, 0.5f);
         }
     }
 
     public void SandmansRecords()
     {
-        
+        optionSelect = false;
+        tripleBar.SetActive(false);
+        sunflowerIcon.SetActive(false);
+        analysisStats.SetActive(true);
+        LeanTween.alpha(analysisStats.GetComponent<RectTransform>(), 1, 0.8f);
+        LeanTween.alpha(sideTabCloseIcon.GetComponent<RectTransform>(), 1, 0.8f);
+    }
+
+    public void Audio()
+    {
+        optionSelect = false;
+        tripleBar.SetActive(false);
+        sunflowerIcon.SetActive(false);
+        analysisStats.SetActive(false);
+        LeanTween.move(soundWindow.GetComponent<RectTransform>(), new Vector3(-55, -262, 0), 0.8f).setEase(curve);
+        LeanTween.alpha(sideTabCloseIcon.GetComponent<RectTransform>(), 1, 0.8f);
+    }
+
+
+    public void closeTabChild()
+    {
+        if (!optionSelect)
+        {
+            LeanTween.alpha(analysisStats.GetComponent<RectTransform>(), 0, 0.1f);
+            LeanTween.alpha(sideTabCloseIcon.GetComponent<RectTransform>(), 0, 0.1f);
+            LeanTween.move(soundWindow.GetComponent<RectTransform>(), new Vector3(-55, 1173, 0), 0.8f).setEase(curve);
+            tripleBar.SetActive(true);
+            optionSelect = true;
+        }
     }
 
     public void MoveDown(GameObject ui_element)
     {
-        LeanTween.move(ui_element.GetComponent<RectTransform>(), new Vector3(-22, -664, 0), 0.1f);
+        LeanTween.move(ui_element.GetComponent<RectTransform>(), new Vector3(-55, -664, 0), 0.1f);
     }
 
     private bool IsMouseOverUI()
@@ -244,20 +303,17 @@ public class UIManager : MonoBehaviour
     {
         if (planting)
         {
-            LeanTween.move(plantingPage.GetComponent<RectTransform>(), new Vector3(-22,23,0), 0.2f);
+            LeanTween.move(plantingPage.GetComponent<RectTransform>(), new Vector3(-22, 23, 0), 0.2f).setEase(curve);
         }
 
         if (optionSelect)
         {
-            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-705, 149, 0), 0.3f);
-            if (IsMouseOverUI())
-            {
-                _panZoom.enabled = false;
-            }
+            LeanTween.move(tripleBarWindow.GetComponent<RectTransform>(), new Vector3(-705, 149, 0), 0.2f).setEase(curve);
+           
         }
         else
         {
-            LeanTween.move(settingsWindow.GetComponent<RectTransform>(), new Vector3(-1365, 149, 0), 0.3f);
+            LeanTween.move(tripleBarWindow.GetComponent<RectTransform>(), new Vector3(-1365, 149, 0), 0.2f).setEase(curve);
         }
     }
 
