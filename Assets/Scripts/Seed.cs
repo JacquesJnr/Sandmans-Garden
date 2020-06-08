@@ -9,14 +9,15 @@ public class Seed : MonoBehaviour
     public Seeds[] seeds;
     private List<GameObject> MenuItems;
     public Texture budpodColour, espadaColour, peacockColour, peelerColour, polyvaseColor, sailColour, wrapvineColour;
-    public RawImage myImage;
-    [SerializeField] private TMPro.TextMeshProUGUI flowerName, desc, flowerTime, fullSize, cost;
+    public RawImage myImage, smallImage;
+    [SerializeField] private TMPro.TextMeshProUGUI flowerName, flowerTime, fullSize, cost, scrollText;
+    public TMPro.TMP_InputField scrollWindow;
     public Color common, uncommon, rare, legendary;
 
     private void Start()
     { 
         MenuItems = new List<GameObject>();
-        
+        smallImage.enabled = false;
 
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("MenuIcons"))
         {
@@ -24,22 +25,27 @@ public class Seed : MonoBehaviour
         }
     }
 
-    public void Flower1() //Budpod
+    public void Flower1() //Wrapvine
     {
+        smallImage.enabled = true;
+        myImage.enabled = false;
+        scrollWindow.text = seeds[0].description;
         flowerName.text = seeds[0].name;
         flowerName.color = seeds[0].rarity;
-        desc.text = seeds[0].description;
+        scrollWindow.text = seeds[0].description;
         flowerTime.text = seeds[0].flowerPeriod.ToString() + " hours";
         fullSize.text = seeds[0].fullSize.ToString() + " cm";
         cost.text = seeds[0].cost.ToString() + " gp";
-        myImage.texture = budpodColour;
+        smallImage.texture = wrapvineColour;
     }
 
     public void Flower2() //Polyvase
     {
+        myImage.enabled = true;
+        smallImage.enabled = false;
         flowerName.text = seeds[1].name;
         flowerName.color = seeds[1].rarity;
-        desc.text = seeds[1].description;
+        scrollWindow.text = seeds[1].description;
         flowerTime.text = seeds[1].flowerPeriod.ToString() + " hours";
         fullSize.text = seeds[1].fullSize.ToString() + " cm";
         cost.text = seeds[1].cost.ToString() + " gp";
@@ -48,31 +54,41 @@ public class Seed : MonoBehaviour
 
     public void Flower3() //Peacock
     {
+        myImage.enabled = true;
+        smallImage.enabled = false;
         flowerName.text = seeds[2].name;
         flowerName.color = seeds[2].rarity;
-        desc.text = seeds[2].description;
+        scrollWindow.text = seeds[2].description;
         flowerTime.text = seeds[2].flowerPeriod.ToString() + " hours";
         fullSize.text = seeds[2].fullSize.ToString() + " cm";
         cost.text = seeds[2].cost.ToString() + " gp";
         myImage.texture = peacockColour;
     }
 
-    public void Flower4() //Peeler
+    public void Flower4() //Sail
     {
+        myImage.enabled = true;
+        smallImage.enabled = false;
         flowerName.text = seeds[3].name;
         flowerName.color = seeds[2].rarity;
-        desc.text = seeds[3].description;
+        scrollWindow.text = seeds[3].description;
         flowerTime.text = seeds[3].flowerPeriod.ToString() + " hours";
         fullSize.text = seeds[3].fullSize.ToString() + " cm";
         cost.text = seeds[3].cost.ToString() + " gp";
-        myImage.texture = peelerColour;
+        myImage.texture = sailColour;
+        float imageSizeX = myImage.GetComponent<RectTransform>().sizeDelta.x;
+        float imageSizeY = myImage.GetComponent<RectTransform>().sizeDelta.y;
+        imageSizeX = 62;
+        imageSizeY = 210;
     }
 
     public void Flower5() //Espada Sol
     {
+        myImage.enabled = true;
+        smallImage.enabled = false;
         flowerName.text = seeds[4].name;
         flowerName.color = seeds[4].rarity;
-        desc.text = seeds[4].description;
+        scrollWindow.text = seeds[4].description;
         flowerTime.text = seeds[4].flowerPeriod.ToString() + " hours";
         fullSize.text = seeds[4].fullSize.ToString() + " cm";
         cost.text = seeds[4].cost.ToString() + " gp";

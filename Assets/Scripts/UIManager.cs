@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     public bool selectingSeed, gardening, optionSelect;
     public bool planting;
     public TMPro.TextMeshProUGUI helpText;
+
+    [SerializeField] private List<GameObject> flowerPrefabs;
+
     private Highlight highlightScript; // References Highlight.cs
     private PanZoom _panZoom;
     
@@ -36,6 +39,9 @@ public class UIManager : MonoBehaviour
         infoWindow = GameObject.Find("SeedWindow");
         flowerImg = GameObject.Find("Image");
         optionsPage = GameObject.Find("Options");
+
+        flowerPrefabs = new List<GameObject>();
+
 
         highlightScript = FindObjectOfType<Highlight>();
         _panZoom = FindObjectOfType<PanZoom>();
@@ -56,6 +62,7 @@ public class UIManager : MonoBehaviour
         {
             RawImage seeds = seedParent.GetComponent<RawImage>();
             menuItems.Add(seeds);
+            flowerPrefabs.Add(seedParent);
             seeds.color = new Color(0.5f,0.5f,0.5f,255);
         }
     }
@@ -136,6 +143,7 @@ public class UIManager : MonoBehaviour
             highlightScript.highlightedGrid = null;
             highlightScript.gridToPlant = null;
             LeanTween.move(ui_Menu.GetComponent<RectTransform>(), new Vector3(0, -520f, 0), 0.5f).setOnComplete(CloseGardeningWindow);
+            Position0();
         }
 
         if (gardening)
@@ -145,6 +153,11 @@ public class UIManager : MonoBehaviour
             sunflowerIcon.SetActive(false);
             zoomBar.SetActive(false);
             zoomIcon.SetActive(false);
+
+            if (!selectingSeed)
+            {
+                Position0();
+            }
         }
 
        
@@ -197,10 +210,7 @@ public class UIManager : MonoBehaviour
 
     public void Position0()
     {
-        if (selectingSeed)
-        {
-            infoWindow.transform.position = hiddenPosition.position;
-        }
+        infoWindow.transform.position = hiddenPosition.position;
     }
     public void Position1()
     {
