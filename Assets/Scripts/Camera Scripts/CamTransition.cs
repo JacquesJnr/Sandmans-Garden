@@ -43,7 +43,6 @@ public class CamTransition : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                LeanTween.move(cam.gameObject, targetPosition, transitionSpeed).setOnComplete(EnablePan);
                 zoomIn();
             }
         }
@@ -60,6 +59,8 @@ public class CamTransition : MonoBehaviour
 
     public void zoomIn()
     {
+        LeanTween.move(cam.gameObject, targetPosition, transitionSpeed).setOnComplete(EnablePan);
+
         LeanTween.value(cam.gameObject, cam.orthographicSize, targetSize, transitionSpeed).setOnUpdate((float flt) => {
             cam.orthographicSize = flt;
         });

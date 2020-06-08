@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     private Highlight highlightScript; // References Highlight.cs
     private PanZoom _panZoom;
+    private Seed _seed;
     
 
     private void Start()
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
 
         highlightScript = FindObjectOfType<Highlight>();
         _panZoom = FindObjectOfType<PanZoom>();
+        _seed = FindObjectOfType<Seed>();
 
         //Finds all planting grids in the scene and adds them to the list plantingGrids
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("PlantingGrid"))
@@ -235,7 +237,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SandmansRecords()
+    public void IconToMouse()
     {
         
     }

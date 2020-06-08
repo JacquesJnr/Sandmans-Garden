@@ -13,6 +13,8 @@ public class Seed : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI flowerName, flowerTime, fullSize, cost, scrollText;
     public TMPro.TMP_InputField scrollWindow;
     public Color common, uncommon, rare, legendary;
+    private bool noIcon = true;
+    public RawImage mouseIcon, mouseIconSmall;
 
     private void Start()
     { 
@@ -70,7 +72,7 @@ public class Seed : MonoBehaviour
         myImage.enabled = true;
         smallImage.enabled = false;
         flowerName.text = seeds[3].name;
-        flowerName.color = seeds[2].rarity;
+        flowerName.color = seeds[3].rarity;
         scrollWindow.text = seeds[3].description;
         flowerTime.text = seeds[3].flowerPeriod.ToString() + " hours";
         fullSize.text = seeds[3].fullSize.ToString() + " cm";
@@ -99,4 +101,13 @@ public class Seed : MonoBehaviour
         //myImage.gameObject.GetComponent<Transform>().localPosition = new Vector3(250, -20 , 0);
     }
 
+    public void GetIcon()
+    {
+        mouseIcon.texture = myImage.texture;
+    }
+
+    public void GetSmallerIcon()
+    {
+        mouseIconSmall.texture = smallImage.texture;
+    }
 }

@@ -47,7 +47,7 @@ public class PanZoom : MonoBehaviour
             
         }
 
-        zoom(Input.GetAxis("Mouse ScrollWheel") * 4f);
+        zoom(Input.GetAxis("Mouse ScrollWheel") * 6f);
         zoomSlider.value = Camera.main.orthographicSize;
 	}
 
