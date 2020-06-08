@@ -22,7 +22,7 @@ public class ChevronFloat : MonoBehaviour
         {
             if (transform.position == origin.position)
             {
-                LeanTween.moveY(gameObject, 12f, duration).setLoopPingPong().setEase(curve);
+                LeanTween.moveY(gameObject, 17f, duration).setLoopPingPong().setEase(curve);
 
             }
         }
@@ -32,6 +32,6 @@ public class ChevronFloat : MonoBehaviour
     {
         gameObject.transform.position = origin.position;
 
-        LeanTween.pause(LeanTween.moveY(gameObject, 12f, duration).setLoopPingPong().setEase(curve).id);
+        LeanTween.pause(LeanTween.moveY(gameObject, 17f, duration).setLoopPingPong().setEase(curve).id);
     }
 }

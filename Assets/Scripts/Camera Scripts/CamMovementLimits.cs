@@ -22,11 +22,11 @@ public class CamMovementLimits : MonoBehaviour
 
         // Calculations assume map is position at the origin
         minX = horzExtent - mapX / 2.0f;
-        maxX = mapX / 3f - horzExtent;
+        maxX = mapX / 2.0f - horzExtent;
         minY = vertExtent - mapY / 2.0f;
         maxY = mapY / 2.0f - vertExtent;
         minZ = horzExtent - mapZ / 2.0f;
-        maxZ = mapZ / 2.0f - mapZ / 2.0f;
+        maxZ = mapZ /2.0f - mapZ/ 2.0f;
     }
 
     void LateUpdate()
@@ -34,7 +34,7 @@ public class CamMovementLimits : MonoBehaviour
         Vector3 v3 = Camera.main.transform.position;
         v3.x = Mathf.Clamp(v3.x, minX, maxX);
         v3.y = Mathf.Clamp(v3.y, minY, maxY);
-        v3.z = Mathf.Clamp(v3.z, minZ, maxZ);
+        v3.z = Mathf.Clamp(v3.z, 0, maxZ);
         Camera.main.transform.position = v3;
     }
 }
