@@ -42,7 +42,7 @@ public class Highlight : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsBoxes))
         {
-         
+
             Debug.Log(hit.transform.gameObject.name);
         }
 
@@ -74,7 +74,7 @@ public class Highlight : MonoBehaviour
         {
             chevron.SetActive(true);
             _chevronFloat.enabled = true;
-            
+
 
             if (highlightedGrid != null)
             {

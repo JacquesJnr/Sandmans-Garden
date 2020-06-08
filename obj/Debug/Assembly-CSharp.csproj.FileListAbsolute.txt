@@ -1,10 +1,7 @@
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Assembly-CSharp.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Assembly-CSharp.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Boo.Lang.dll
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Cinemachine.dll
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\com.unity.cinemachine.editor.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Microsoft.CSharp.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Microsoft.Win32.Primitives.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\mscorlib.dll
@@ -121,8 +118,6 @@ C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\System.Xml.X
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\System.Xml.XPath.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.CollabProxy.Editor.dll
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Postprocessing.Editor.dll
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Postprocessing.Runtime.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Rider.Editor.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.TextMeshPro.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.TextMeshPro.Editor.dll
@@ -209,16 +204,12 @@ C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\UnityEngine.
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\UnityEngine.xml
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\UnityEditor.xml
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Timeline.Editor.pdb
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Cinemachine.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.VSCode.Editor.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.TextMeshPro.Editor.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\UnityEngine.UI.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Timeline.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.CollabProxy.Editor.pdb
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Postprocessing.Editor.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Rider.Editor.pdb
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.Postprocessing.Runtime.pdb
-C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\com.unity.cinemachine.editor.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\Unity.TextMeshPro.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\UnityEditor.UI.pdb
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\UnityEngine.AIModule.xml
@@ -285,3 +276,4 @@ C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\Temp\bin\Debug\UnityEngine.
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\obj\Debug\Assembly-CSharp.dll
 C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Jacques' PC\Documents\Unity\Sandmans-Garden\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache

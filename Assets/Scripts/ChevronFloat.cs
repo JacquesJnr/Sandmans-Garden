@@ -23,7 +23,7 @@ public class ChevronFloat : MonoBehaviour
             if (transform.position == origin.position)
             {
                 LeanTween.moveY(gameObject, 12f, duration).setLoopPingPong().setEase(curve);
-                
+
             }
         }
     }
