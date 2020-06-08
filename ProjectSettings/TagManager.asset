@@ -9,7 +9,6 @@ TagManager:
   - SeedIcon
   - ChevronTransform
   - seedMenuIcon
-  - sideTabWindow
   layers:
   - Default
   - TransparentFX
