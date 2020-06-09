@@ -104,6 +104,8 @@ public class Seed : MonoBehaviour
     public void GetIcon()
     {
         mouseIcon.texture = myImage.texture;
+
+
     }
 
     public void GetSmallerIcon()

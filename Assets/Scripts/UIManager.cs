@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI helpText;
 
     [SerializeField] private List<GameObject> flowerPrefabs;
+    private Vector3 mouse;
 
     private Highlight highlightScript; // References Highlight.cs
     private PanZoom _panZoom;
@@ -42,7 +43,7 @@ public class UIManager : MonoBehaviour
         optionsPage = GameObject.Find("Options");
 
         flowerPrefabs = new List<GameObject>();
-
+        
 
         highlightScript = FindObjectOfType<Highlight>();
         _panZoom = FindObjectOfType<PanZoom>();
@@ -83,6 +84,8 @@ public class UIManager : MonoBehaviour
             {
                 plantingGrids[i].SetActive(true);
             }
+
+            mouse = new Vector3(Input.GetAxis("Mouse X"), 0, 0);
         }
 
         //Checks the Highlight script to see whether or not the seed menu is interactable
@@ -239,7 +242,7 @@ public class UIManager : MonoBehaviour
 
     public void IconToMouse()
     {
-        
+        _seed.mouseIcon.transform.position = Camera.main.ScreenToWorldPoint(mouse);
     }
 
     public void MoveDown(GameObject ui_element)
