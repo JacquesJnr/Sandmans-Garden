@@ -10,19 +10,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> plantingGrids;
     //[SerializeField] private List<GameObject> gardeningBoxes;
     [SerializeField] private List<GameObject> seedMenuBoxes;
+    [SerializeField] private List<Transform> plotZoomPositions;
+    [SerializeField] private List<GameObject> flowerPrefabs;
     [SerializeField] private List<RawImage> menuItems;
     public bool hideGrid = true;
     private int iconToHighlight;
 
+    private Camera cam;
     private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings, flowerImg, settingsWindow; //Canvas items
     public GameObject optionsPage, plantingPage, background;
     [SerializeField] private Texture infoImage;
     public RectTransform hiddenPosition, visiblePosition;
     public bool selectingSeed, gardening, optionSelect;
     public bool planting;
-    public TMPro.TextMeshProUGUI helpText;
-
-    [SerializeField] private List<GameObject> flowerPrefabs;
+    public TMPro.TextMeshProUGUI helpText, buyCancel;
     private Vector3 mouse;
 
     private Highlight highlightScript; // References Highlight.cs
@@ -32,6 +33,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        cam = Camera.main;
+
         ui_Menu = GameObject.Find("GardeningMenu");
         sunflowerIcon = GameObject.Find("GardeningIcon");
         zoomBar = GameObject.Find("Zoom Bar");
@@ -53,13 +56,9 @@ public class UIManager : MonoBehaviour
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("PlantingGrid"))
         {
             plantingGrids.Add(go);
-        }       
-
-        foreach(GameObject slot in GameObject.FindGameObjectsWithTag("seedMenuIcon"))
-        {
-            seedMenuBoxes.Add(slot);
-            slot.GetComponent<Button>().interactable = false;
         }
+
+        DisableButtons();
 
         foreach(GameObject seedParent in GameObject.FindGameObjectsWithTag("SeedIcon"))
         {
@@ -67,6 +66,12 @@ public class UIManager : MonoBehaviour
             menuItems.Add(seeds);
             flowerPrefabs.Add(seedParent);
             seeds.color = new Color(0.5f,0.5f,0.5f,255);
+        }
+
+        foreach (GameObject plotPos in GameObject.FindGameObjectsWithTag("plotZoom"))
+        {
+            Transform cameraPositions = plotPos.GetComponent<Transform>();
+            plotZoomPositions.Add(cameraPositions);
         }
     }
 
@@ -165,7 +170,35 @@ public class UIManager : MonoBehaviour
             }
         }
 
-       
+        if (_seed.goToMouse)
+        {
+            IconToMouse();
+            DisableGridTriggers();
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 8f, 1.5f);
+            helpText.text = "Right Click to cancel";
+            Position0();
+            if (highlightScript.gridToPlant !=null)
+            {
+              // LeanTween.move(cam.gameObject, highlightScript.highlightedGrid.transform.position, 1.5f);
+            }
+        }
+
+        if (_seed. goToMouse_s)
+        {
+            IconToMouse_s();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            highlightScript.highlightedGrid = null;
+            EnableGridTriggers();
+            _seed. goToMouse_s = false;
+            _seed.goToMouse = false;
+            Cursor.visible = true;
+            buyCancel.text = "Click to buy";
+            MoveDown(_seed.mouseIcon.gameObject);
+            MoveDown(_seed.mouseIconSmall.gameObject);
+        }
     }
 
     // Sunflower Icon - Sets the value of the hideGrid bool which determines if the grids should be shown or not
@@ -179,6 +212,31 @@ public class UIManager : MonoBehaviour
         else if (gardening)
         {
             gardening = false;
+        }
+    }
+
+    public void DisableButtons()
+    {
+        foreach (GameObject slot in GameObject.FindGameObjectsWithTag("seedMenuIcon"))
+        {
+            seedMenuBoxes.Add(slot);
+            slot.GetComponent<Button>().interactable = false;
+        }
+    }
+
+    public void DisableGridTriggers()
+    {
+        for(int i = 0; i < plantingGrids.Count; i++)
+        {
+            plantingGrids[i].GetComponent<Collider>().enabled = false;
+        }
+    } 
+
+    public void EnableGridTriggers()
+    {
+        for (int i = 0; i < plantingGrids.Count; i++)
+        {
+            plantingGrids[i].GetComponent<Collider>().enabled = true;
         }
     }
 
@@ -217,6 +275,7 @@ public class UIManager : MonoBehaviour
     {
         infoWindow.transform.position = hiddenPosition.position;
     }
+
     public void Position1()
     {
         if (selectingSeed)
@@ -242,12 +301,25 @@ public class UIManager : MonoBehaviour
 
     public void IconToMouse()
     {
-        _seed.mouseIcon.transform.position = Camera.main.ScreenToWorldPoint(mouse);
+        if (_seed.goToMouse)
+        {
+            _seed.mouseIcon.transform.position = Input.mousePosition;
+            buyCancel.text = "Right click to cancel";
+        }
+    }
+
+    public void IconToMouse_s()
+    {
+        if (_seed.goToMouse_s)
+        {
+            _seed.mouseIconSmall.transform.position = Input.mousePosition;
+            buyCancel.text = "Right click to cancel";
+        }
     }
 
     public void MoveDown(GameObject ui_element)
     {
-        LeanTween.move(ui_element.GetComponent<RectTransform>(), new Vector3(-22, -664, 0), 0.1f);
+        LeanTween.move(ui_element.GetComponent<RectTransform>(), new Vector3(-22, -1200, 0), 0.1f);
     }
 
     private bool IsMouseOverUI()

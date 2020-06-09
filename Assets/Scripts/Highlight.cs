@@ -103,10 +103,6 @@ public class Highlight : MonoBehaviour
                     gridToPlant = null;
                     Debug.Log("Deselected " + highlightedGrid.name);
                 }
-                else
-                {
-                    Debug.Log("There is no grid selected");
-                }
             }
         }
     }

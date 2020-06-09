@@ -13,13 +13,16 @@ public class Seed : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI flowerName, flowerTime, fullSize, cost, scrollText;
     public TMPro.TMP_InputField scrollWindow;
     public Color common, uncommon, rare, legendary;
-    private bool noIcon = true;
+    public bool goToMouse, goToMouse_s;
     public RawImage mouseIcon, mouseIconSmall;
+
+    private UIManager _ui;
 
     private void Start()
     { 
         MenuItems = new List<GameObject>();
         smallImage.enabled = false;
+        _ui = FindObjectOfType<UIManager>();
 
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("MenuIcons"))
         {
@@ -103,13 +106,21 @@ public class Seed : MonoBehaviour
 
     public void GetIcon()
     {
-        mouseIcon.texture = myImage.texture;
-
-
+        if (!goToMouse)
+        {
+            goToMouse = true;
+            mouseIcon.texture = myImage.texture;
+            Cursor.visible = false;
+        }
     }
 
     public void GetSmallerIcon()
     {
-        mouseIconSmall.texture = smallImage.texture;
+        if (!goToMouse_s)
+        {
+            goToMouse_s = true;
+            mouseIconSmall.texture = smallImage.texture;
+            Cursor.visible = false;
+        }
     }
 }

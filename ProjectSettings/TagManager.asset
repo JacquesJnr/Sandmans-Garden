@@ -9,6 +9,7 @@ TagManager:
   - SeedIcon
   - ChevronTransform
   - seedMenuIcon
+  - plotZoom
   layers:
   - Default
   - TransparentFX
