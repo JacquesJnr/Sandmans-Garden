@@ -177,15 +177,15 @@ public class UIManager : MonoBehaviour
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 8f, 1.5f);
             helpText.text = "Right Click to cancel";
             Position0();
-            if (highlightScript.gridToPlant !=null)
-            {
-              // LeanTween.move(cam.gameObject, highlightScript.highlightedGrid.transform.position, 1.5f);
-            }
         }
 
-        if (_seed. goToMouse_s)
+        if (_seed.goToMouse_s)
         {
             IconToMouse_s();
+            DisableGridTriggers();
+            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 8f, 1.5f);
+            helpText.text = "Right Click to cancel";
+            Position0();
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -306,6 +306,8 @@ public class UIManager : MonoBehaviour
             _seed.mouseIcon.transform.position = Input.mousePosition;
             buyCancel.text = "Right click to cancel";
         }
+
+        MoveCamToTarget();
     }
 
     public void IconToMouse_s()
@@ -314,6 +316,69 @@ public class UIManager : MonoBehaviour
         {
             _seed.mouseIconSmall.transform.position = Input.mousePosition;
             buyCancel.text = "Right click to cancel";
+        }
+    }
+
+    public void MoveCamToTarget()
+    {
+        if (highlightScript.gridToPlant.name == "0")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(20, 1 , 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "1")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(22, 22, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "2")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-5, 24, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "3")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-5, 24, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "4")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-5, 11, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "5")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-5, 11, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "6")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-15, -13, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "7")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-15, -13, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "8")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-19, -13, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "9")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-19, -13, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "10")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-33, 7, 0), 1f);
+        }
+
+        if (highlightScript.gridToPlant.name == "11")
+        {
+            LeanTween.move(cam.gameObject, new Vector3(-33, 7, 0), 1f);
         }
     }
 
