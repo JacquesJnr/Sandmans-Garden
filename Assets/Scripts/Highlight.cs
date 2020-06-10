@@ -5,14 +5,15 @@ using UnityEngine.EventSystems;
 
 public class Highlight : MonoBehaviour
 {
-    public GameObject highlightedGrid, gridToPlant;
-    public GameObject prevHighlighted; // set private if works
+    public GameObject highlightedGrid, gridToPlant, highlightedSingle;
+    public GameObject prevHighlighted; 
     public LayerMask whatIsGrids;
     public LayerMask whatIsBoxes;
-    //public LayerMask whatIsPlots; // For later
+    public LayerMask whatIsPlots; 
     public bool selected;
     public Color highlighted;
     public Color unhighlighted;
+    public Material singleSelect, multiSelect;
 
     private Ray ray;
     private RaycastHit hit;
@@ -23,13 +24,21 @@ public class Highlight : MonoBehaviour
 
     private UIManager _ui;
     private ChevronFloat _chevronFloat;
+    private Seed _seed;
 
     private void Start()
     {
         chevron.transform.position = chevronOrigin.position;
         _ui = FindObjectOfType<UIManager>();
         _chevronFloat = FindObjectOfType<ChevronFloat>();
+        _seed = FindObjectOfType<Seed>();
     }
+
+    public void SingleSelect()
+    {
+        Debug.Log("Hello");
+    }
+
 
     private void FixedUpdate()
     {
@@ -46,6 +55,16 @@ public class Highlight : MonoBehaviour
             Debug.Log(hit.transform.gameObject.name);
         }
 
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsPlots))
+        {
+            if (_seed.goToMouse)
+            {
+                highlightedSingle = hit.transform.gameObject;
+                Renderer tempMat = highlightedSingle.GetComponent<Renderer>();
+                tempMat.material = singleSelect;
+            }
+        }
+
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGrids))
         {
             highlightedGrid = hit.transform.gameObject;
@@ -57,19 +76,17 @@ public class Highlight : MonoBehaviour
         }
         else
         {
-            if (highlightedGrid != null)
-            {
+           if(highlightedGrid != null)
+           {
                 foreach (Renderer renderer in highlightedGrid.GetComponentsInChildren<Renderer>())
                 {
                     renderer.material.SetColor("_TintColor", unhighlighted);
                 }
 
                 highlightedGrid = null;
-            }
-
+           }
         }
-
-
+        
         if (!_ui.hideGrid)
         {
             chevron.SetActive(true);

@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<RawImage> menuItems;
     public bool hideGrid = true;
     private int iconToHighlight;
-
     private Camera cam;
     private GameObject ui_Menu, infoWindow, sunflowerIcon, zoomBar, zoomIcon, settings, flowerImg, settingsWindow; //Canvas items
     public GameObject optionsPage, plantingPage, background;
@@ -25,7 +24,7 @@ public class UIManager : MonoBehaviour
     public bool planting;
     public TMPro.TextMeshProUGUI helpText, buyCancel;
     private Vector3 mouse;
-
+ 
     private Highlight highlightScript; // References Highlight.cs
     private PanZoom _panZoom;
     private Seed _seed;
@@ -188,20 +187,35 @@ public class UIManager : MonoBehaviour
             Position0();
         }
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (_seed.goToMouse || _seed.goToMouse_s)
+            {
+                if (highlightScript.highlightedSingle != null)
+                {
+                    _seed.SpawnFlower(highlightScript.highlightedSingle);
+                }
+            }
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
-            highlightScript.highlightedGrid = null;
-            EnableGridTriggers();
-            _seed. goToMouse_s = false;
-            _seed.goToMouse = false;
-            Cursor.visible = true;
-            buyCancel.text = "Click to buy";
-            MoveDown(_seed.mouseIcon.gameObject);
-            MoveDown(_seed.mouseIconSmall.gameObject);
+            if(_seed.goToMouse || _seed.goToMouse_s)
+            {
+                cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, 17f, 0.8f);
+                highlightScript.highlightedGrid = null;
+                EnableGridTriggers();
+                _seed.goToMouse_s = false;
+                _seed.goToMouse = false;
+                Cursor.visible = true;
+                buyCancel.text = "Click to buy";
+                MoveDown(_seed.mouseIcon.gameObject);
+                MoveDown(_seed.mouseIconSmall.gameObject);
+            }
+           
         }
     }
 
-    // Sunflower Icon - Sets the value of the hideGrid bool which determines if the grids should be shown or not
     public void SeedMenu()
     {
         if(!gardening)
@@ -303,6 +317,7 @@ public class UIManager : MonoBehaviour
     {
         if (_seed.goToMouse)
         {
+            _seed.goToMouse_s = false;
             _seed.mouseIcon.transform.position = Input.mousePosition;
             buyCancel.text = "Right click to cancel";
         }
@@ -314,9 +329,12 @@ public class UIManager : MonoBehaviour
     {
         if (_seed.goToMouse_s)
         {
+            _seed.goToMouse = false;
             _seed.mouseIconSmall.transform.position = Input.mousePosition;
             buyCancel.text = "Right click to cancel";
         }
+
+        MoveCamToTarget();
     }
 
     public void MoveCamToTarget()

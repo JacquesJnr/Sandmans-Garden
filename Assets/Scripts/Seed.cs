@@ -9,19 +9,21 @@ public class Seed : MonoBehaviour
     public Seeds[] seeds;
     private List<GameObject> MenuItems;
     public Texture budpodColour, espadaColour, peacockColour, peelerColour, polyvaseColor, sailColour, wrapvineColour;
+    public GameObject wrapvinePrefab, peacockPrefab, sailPrefab, espadaPrefab;
     public RawImage myImage, smallImage;
     [SerializeField] private TMPro.TextMeshProUGUI flowerName, flowerTime, fullSize, cost, scrollText;
     public TMPro.TMP_InputField scrollWindow;
     public Color common, uncommon, rare, legendary;
     public bool goToMouse, goToMouse_s;
     public RawImage mouseIcon, mouseIconSmall;
+  
 
     private UIManager _ui;
 
     private void Start()
     { 
         MenuItems = new List<GameObject>();
-        smallImage.enabled = false;
+        smallImage.gameObject.SetActive(false);
         _ui = FindObjectOfType<UIManager>();
 
         foreach(GameObject go in GameObject.FindGameObjectsWithTag("MenuIcons"))
@@ -32,8 +34,8 @@ public class Seed : MonoBehaviour
 
     public void Flower1() //Wrapvine
     {
-        smallImage.enabled = true;
-        myImage.enabled = false;
+        myImage.gameObject.SetActive(false);
+        smallImage.gameObject.SetActive(true);
         scrollWindow.text = seeds[0].description;
         flowerName.text = seeds[0].name;
         flowerName.color = seeds[0].rarity;
@@ -46,8 +48,8 @@ public class Seed : MonoBehaviour
 
     public void Flower2() //Polyvase
     {
-        myImage.enabled = true;
-        smallImage.enabled = false;
+        myImage.gameObject.SetActive(true);
+        smallImage.gameObject.SetActive(false);
         flowerName.text = seeds[1].name;
         flowerName.color = seeds[1].rarity;
         scrollWindow.text = seeds[1].description;
@@ -59,8 +61,8 @@ public class Seed : MonoBehaviour
 
     public void Flower3() //Peacock
     {
-        myImage.enabled = true;
-        smallImage.enabled = false;
+        myImage.gameObject.SetActive(true);
+        smallImage.gameObject.SetActive(false);
         flowerName.text = seeds[2].name;
         flowerName.color = seeds[2].rarity;
         scrollWindow.text = seeds[2].description;
@@ -72,8 +74,8 @@ public class Seed : MonoBehaviour
 
     public void Flower4() //Sail
     {
-        myImage.enabled = true;
-        smallImage.enabled = false;
+        myImage.gameObject.SetActive(true);
+        smallImage.gameObject.SetActive(false);
         flowerName.text = seeds[3].name;
         flowerName.color = seeds[3].rarity;
         scrollWindow.text = seeds[3].description;
@@ -89,8 +91,8 @@ public class Seed : MonoBehaviour
 
     public void Flower5() //Espada Sol
     {
-        myImage.enabled = true;
-        smallImage.enabled = false;
+        myImage.gameObject.SetActive(true);
+        smallImage.gameObject.SetActive(false);
         flowerName.text = seeds[4].name;
         flowerName.color = seeds[4].rarity;
         scrollWindow.text = seeds[4].description;
@@ -119,8 +121,37 @@ public class Seed : MonoBehaviour
         if (!goToMouse_s)
         {
             goToMouse_s = true;
+            goToMouse = false;
             mouseIconSmall.texture = smallImage.texture;
             Cursor.visible = false;
         }
+    }
+
+    public void SpawnFlower(GameObject plot)
+    {
+        //if (smallImage.texture = wrapvineColour)
+        //    Object.Instantiate(wrapvinePrefab, plot.transform.position, Quaternion.identity);
+        //{
+        //    Debug.Log("Wrapvine");
+        //}
+
+        if (myImage.texture == peacockColour)
+        {
+            Debug.Log("Peacock");
+            Object.Instantiate(peacockPrefab, plot.transform.position, Quaternion.identity);
+        }
+
+        if (myImage.texture == sailColour)
+        {
+            Debug.Log("Sail");
+            Object.Instantiate(sailPrefab, plot.transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
+        }
+
+        if (myImage.texture == espadaColour)
+        {
+            Debug.Log("Espada");
+            Object.Instantiate(espadaPrefab, plot.transform.position, Quaternion.identity);
+        }
+
     }
 }
